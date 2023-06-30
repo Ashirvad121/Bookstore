@@ -4,10 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.BookException;
 import com.masai.model.Book;
+import com.masai.payload.BookResponse;
 import com.masai.repo.BookRepo;
 
 
@@ -71,15 +76,21 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public List<Book> getAllBook() throws BookException{
+	public BookResponse getAllBook(int pageNo,int pageSize,String sortBy,String sortDir) throws BookException{
 		// TODO Auto-generated method stub
-		List<Book> list=brepo.findAll();
-		if(list.size()==0) {
-			throw new BookException("No book available");
-		}
-		else {
-			return list;
-		}
+		Sort sort=sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(sortBy).ascending()
+				:Sort.by(sortBy).descending();
+		Pageable pageable=PageRequest.of(pageNo, pageSize,sort);
+		Page<Book> books=brepo.findAll(pageable);
+		List<Book> listOfBook=books.getContent();
+		BookResponse bookResponse=new BookResponse();
+		bookResponse.setContents(listOfBook);
+		bookResponse.setPageNo(books.getNumber());
+		bookResponse.setPageSize(books.getSize());
+		bookResponse.setTotalElements(books.getTotalElements());
+		bookResponse.setTotalpages(books.getTotalPages());
+		bookResponse.setLast(books.isLast());
+		return bookResponse;
 	}
 
 	@Override

@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Service.BookService;
 import com.masai.exception.BookException;
 import com.masai.model.Book;
+import com.masai.payload.BookResponse;
+import com.masai.utils.AppConstants;
 
 import jakarta.validation.Valid;
 
@@ -49,9 +52,14 @@ public class BookController {
 	}
 	
 	@GetMapping("/allBook")
-	public ResponseEntity<List<Book>> getAllBook() throws BookException{
-		List books= bser.getAllBook();
-		return new ResponseEntity<List<Book>>(books,HttpStatus.OK);
+	public  ResponseEntity<BookResponse> getAllBook(
+			@RequestParam(value="pageNo",defaultValue = AppConstants.DEFAULT_PAGE_NUMBER,required = false) int pageNo,
+			@RequestParam(value="pageSize",defaultValue = AppConstants.DEFAULT_PAGE_SIZE,required = false) int pageSize,
+			@RequestParam(value="sortBy",defaultValue = AppConstants.DEFAULT_SORT_BY,required = false) String sortBy,
+			@RequestParam(value="sortDir",defaultValue = AppConstants.DEFAULT_SORT_DIRECTION,required = false) String sortDir
+			) throws BookException{
+		BookResponse  books= bser.getAllBook(pageNo,pageSize,sortBy,sortDir);
+		return new ResponseEntity(books,HttpStatus.OK);
 	}
 	@PutMapping("/updatebook")
 	public ResponseEntity<Book> updateBook(@Valid @RequestBody Book book) throws BookException{

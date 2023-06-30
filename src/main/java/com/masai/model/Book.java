@@ -10,8 +10,9 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Book {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Integer isbn;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Integer id;
+	int isbn;
 	@NotNull
 	String title;
 	@NotNull
@@ -25,6 +26,7 @@ public class Book {
 	
 	public Book() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Book(Integer isbn, @NotNull String title, @NotNull String author, @NotNull String description,
