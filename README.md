@@ -56,6 +56,9 @@ The Bookstore application uses a MySQL database to store book information. The d
 - `title` (string) - The title of the book
 - `author` (string) - The author of the book
 - `price` (integer) - The price of the book
+- `description (description)` - Description of the book
+- `publishDate (Date)` - When the book was published
+- `status (boolean)` - currently the book is available or not
 
 ## Technologies Used
 
