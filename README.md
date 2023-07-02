@@ -11,38 +11,23 @@ To run the Bookstore application locally, follow the instructions below:
 - Java Development Kit (JDK) version 11 or higher
 - MySQL database
 
-### Installation
+### Installation of STS
 
-1. Clone the repository:
+1. Please follow the following steps: https://www.javatpoint.com/spring-boot-download-and-install-sts-ide
 
-```bash
-git clone https://github.com/your-username/bookstore.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd bookstore
-```
-
-3. Configure the database:
-
-- Open the `src/main/resources/application.properties` file.
-- Modify the database connection properties such as URL, username, and password to match your MySQL configuration.
-
-4. Build the project:
-
-```bash
-./mvnw clean package
-```
 
 ### Running the Application
 
-After the installation steps, you can run the Bookstore application using the following command:
-
-```bash
-./mvnw spring-boot:run
-```
+1. Clone the repository: git clone https://github.com/Ashirvad121/Bookstore
+2. Import the project into STS:
+Click File > Import...
+•
+Select Maven > Existing Maven Projects and click Next
+•
+Browse to the project directory and click Finish
+•
+3. Update the values in application.properties with your MySQL database connection details.
+4. Run the app: Right-click the project in the Package Explorer and click Run As > Spring Boot App. 
 
 The application will start running on `http://localhost:8080`.
 
