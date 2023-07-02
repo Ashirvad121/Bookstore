@@ -40,10 +40,10 @@ The Bookstore API provides the following endpoints:
 - `DELETE /books/{id}` - Delete a book by its ID
 - `GET /bookbyisbn/{isbn}` - Get a book by its ISBN
 - `GET /bookbytitle/{name}` - Get books by their title 
-- 'Get /bookbyauthor/{author} - Get books by their author
+- `Get /bookbyauthor/{author}` - Get books by their author
 - `GET /allBook?sort={field}&direction={asc|desc}` - Get books sorted by a specified field (e.g., `price`) and direction (ascending or descending)
-- 'Put /updatebook - To update book
-- 'Delete /deletebook/{isbn} - To delete book useing ISBN
+- `Put /updatebook`- To update book
+- `Delete /deletebook/{isbn}`- To delete book useing ISBN
 
 Note: Replace `{id}`, `{isbn}`, `{title}`, `{field}`, `{asc|desc}`, `{page}`, and `{size}` with the actual values.
 
