@@ -41,7 +41,7 @@ The Bookstore API provides the following endpoints:
 - `GET /bookbyisbn/{isbn}` - Get a book by its ISBN
 - `GET /bookbytitle/{name}` - Get books by their title 
 - `Get /bookbyauthor/{author}` - Get books by their author
-- `GET /allBook?sort={field}&direction={asc|desc}` - Get books sorted by a specified field (e.g., `price`) and direction (ascending or descending)
+- `GET /allBook?sortBy={any parameter}&sortDir={asc|desc}&pageSize={any interger value}&pageNo={any interger value}` - Get books sorted by a specified field (e.g., `price`) and direction (ascending or descending) and you can also change the page size and page number
 - `Put /updatebook`- To update book
 - `Delete /deletebook/{isbn}`- To delete book useing ISBN
 
